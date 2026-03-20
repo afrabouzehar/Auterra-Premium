@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CarRent — Location de Voitures</title>
+  <link rel="stylesheet" href="style.css"/>
+  <!-- Icônes SVG inline via CSS, polices Google -->
+  <link href="./styles/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       HEADER / NAVBAR
+  ═══════════════════════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+
+      <!-- Logo -->
+      <a href="#accueil" class="logo">
+        <span class="logo-icon">◈</span>
+        Car<span>Rent</span>
+      </a>
+
+      <!-- Menu principal -->
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="#accueil"  class="nav-link active">Accueil</a></li>
+          <li><a href="#voitures" class="nav-link">Voitures</a></li>
+          <li><a href="#apropos"  class="nav-link">À propos</a></li>
+          <li><a href="#contact"  class="nav-link">Contact</a></li>
+        </ul>
+        <!-- Bouton réserver (visible dans le menu mobile aussi) -->
+        <a href="#voitures" class="btn-reserve nav-reserve">Réserver</a>
+      </nav>
+
+      <!-- Contrôles droite -->
+      <div class="nav-actions">
+        <!-- Toggle dark mode -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Basculer le mode sombre">
+          <span class="theme-icon" id="themeIcon">🌙</span>
+        </button>
+        <!-- Bouton réserver (desktop) -->
+        <a href="#voitures" class="btn-reserve">Réserver</a>
+        <!-- Burger (mobile) -->
+        <button class="burger" id="burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION HERO
+  ═══════════════════════════════════════════ -->
+  <section class="hero" id="accueil">
+    <!-- Fond dégradé animé + grille -->
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">✦ Location Premium &amp; Accessible</p>
+      <h1 class="hero-title">
+        La route vous<br>appartient.<br>
+        <em>Choisissez votre&nbsp;style.</em>
+      </h1>
+      <p class="hero-desc">
+        Plus de 200 véhicules disponibles dans toute la France.<br>
+        Réservez en 60 secondes, sans frais cachés.
+      </p>
+
+      <!-- Barre de recherche -->
+      <form class="search-bar" id="searchForm" onsubmit="rechercherVoitures(event)">
+        <div class="search-field">
+          <label for="searchCity">📍 Ville</label>
+          <select id="searchCity">
+            <option value="">Toutes les villes</option>
+            <option>Paris</option>
+            <option>Lyon</option>
+            <option>Marseille</option>
+            <option>Bordeaux</option>
+            <option>Lille</option>
+          </select>
+        </div>
+        <div class="search-divider"></div>
+        <div class="search-field">
+          <label for="searchDate">📅 Date de départ</label>
+          <input type="date" id="searchDate"/>
+        </div>
+        <div class="search-divider"></div>
+        <div class="search-field">
+          <label for="searchType">🚗 Type de véhicule</label>
+          <select id="searchType">
+            <option value="">Tous les types</option>
+            <option value="Sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="Coupé">Coupé</option>
+            <option value="Citadine">Citadine</option>
+            <option value="Luxe">Luxe</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-search">Rechercher</button>
+      </form>
+
+      <!-- Stats rapides -->
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>200+</strong><span>Véhicules</span></div>
+        <div class="hero-stat"><strong>50k+</strong><span>Clients</span></div>
+        <div class="hero-stat"><strong>4.9★</strong><span>Note moyenne</span></div>
+        <div class="hero-stat"><strong>15</strong><span>Villes</span></div>
+      </div>
+    </div>
+
+    <!-- Voiture décorative hero -->
+    <div class="hero-car">🚘</div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION VOITURES
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="voitures">
+    <div class="container">
+
+      <!-- En-tête de section -->
+      <div class="section-header reveal">
+        <p class="section-eyebrow">✦ Notre flotte</p>
+        <h2 class="section-title">Trouvez le véhicule <em>idéal</em></h2>
+        <p class="section-desc">Du citadin agile au SUV aventurier, chaque voiture est vérifiée et assurée.</p>
+      </div>
+
+      <!-- Barre de filtres -->
+      <div class="filters reveal">
+        <div class="filter-group">
+          <span class="filter-label">Catégorie :</span>
+          <div class="filter-tabs" id="filterTabs">
+            <button class="filter-tab active" data-filter="all">Tous</button>
+            <button class="filter-tab" data-filter="Sedan">Sedan</button>
+            <button class="filter-tab" data-filter="SUV">SUV</button>
+            <button class="filter-tab" data-filter="Coupé">Coupé</button>
+            <button class="filter-tab" data-filter="Citadine">Citadine</button>
+            <button class="filter-tab" data-filter="Luxe">Luxe</button>
+          </div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Prix max :</span>
+          <div class="price-range">
+            <input type="range" id="priceRange" min="50" max="500" value="500" step="10"/>
+            <span id="priceLabel">500 €/j</span>
+          </div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Trier par :</span>
+          <select class="sort-select" id="sortSelect">
+            <option value="default">Défaut</option>
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+            <option value="name">Nom A→Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Compteur résultats -->
+      <p class="results-count" id="resultsCount">Affichage de 8 véhicules</p>
+
+      <!-- Grille de voitures -->
+      <div class="cars-grid" id="carsGrid">
+        <!-- Généré par JavaScript -->
+      </div>
+
+      <!-- Message si aucun résultat -->
+      <div class="no-results hidden" id="noResults">
+        <span>🔍</span>
+        <p>Aucun véhicule ne correspond à vos critères.</p>
+        <button class="btn-primary" onclick="resetFiltres()">Réinitialiser les filtres</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION À PROPOS
+  ═══════════════════════════════════════════ -->
+  <section class="section section-alt" id="apropos">
+    <div class="container">
+      <div class="apropos-grid">
+
+        <!-- Colonne texte -->
+        <div class="apropos-text reveal">
+          <p class="section-eyebrow">✦ À propos de nous</p>
+          <h2 class="section-title">Pourquoi choisir <em>CarRent</em> ?</h2>
+          <p class="apropos-desc">
+            Depuis 2015, CarRent s'impose comme le leader de la location de voitures
+            en France. Notre mission : vous offrir une expérience sans stress, des
+            prix transparents et des véhicules impeccables.
+          </p>
+          <div class="avantages">
+            <div class="avantage">
+              <div class="avantage-icon">🛡️</div>
+              <div>
+                <h4>Assurance tous risques</h4>
+                <p>Incluse dans chaque location, sans surprises.</p>
+              </div>
+            </div>
+            <div class="avantage">
+              <div class="avantage-icon">⚡</div>
+              <div>
+                <h4>Réservation instantanée</h4>
+                <p>Confirmation par email en moins de 60 secondes.</p>
+              </div>
+            </div>
+            <div class="avantage">
+              <div class="avantage-icon">🔑</div>
+              <div>
+                <h4>Remise de clé flexible</h4>
+                <p>En agence, à l'aéroport ou directement à votre hôtel.</p>
+              </div>
+            </div>
+            <div class="avantage">
+              <div class="avantage-icon">📞</div>
+              <div>
+                <h4>Support 24h/24</h4>
+                <p>Une équipe disponible à tout moment pour vous aider.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne chiffres -->
+        <div class="apropos-stats reveal" style="transition-delay:.15s">
+          <div class="stat-card">
+            <div class="stat-big" data-count="200">0</div>
+            <div class="stat-label">Véhicules disponibles</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-big" data-count="50000">0</div>
+            <div class="stat-label">Clients satisfaits</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-big" data-count="15">0</div>
+            <div class="stat-label">Agences en France</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-big" data-count="9">0</div>
+            <div class="stat-label">Années d'expérience</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       SECTION CONTACT
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">✦ Contactez-nous</p>
+        <h2 class="section-title">Une <em>question</em> ?<br>On vous répond.</h2>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Infos contact -->
+        <div class="contact-infos reveal">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Adresse</h4>
+              <p>12 Avenue des Champs-Élysées, 75008 Paris</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4>Téléphone</h4>
+              <p>+33 1 23 45 67 89</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <p>contact@carrent.fr</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <h4>Horaires</h4>
+              <p>Lun–Sam : 8h00–20h00<br>Dim : 9h00–18h00</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulaire -->
+        <form class="contact-form reveal" id="contactForm" style="transition-delay:.15s" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactNom">Nom complet <span class="required">*</span></label>
+              <input type="text" id="contactNom" placeholder="Jean Dupont" required/>
+              <span class="form-error" id="errNom"></span>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email <span class="required">*</span></label>
+              <input type="email" id="contactEmail" placeholder="jean@exemple.fr" required/>
+              <span class="form-error" id="errEmail"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contactSujet">Sujet</label>
+            <select id="contactSujet">
+              <option>Demande de réservation</option>
+              <option>Problème avec une location</option>
+              <option>Facturation</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message <span class="required">*</span></label>
+            <textarea id="contactMessage" rows="5" placeholder="Votre message ici…" required></textarea>
+            <span class="form-error" id="errMessage"></span>
+          </div>
+          <button type="submit" class="btn-primary btn-submit">
+            <span class="btn-text">Envoyer le message</span>
+            <span class="btn-loader hidden">⏳ Envoi…</span>
+          </button>
+          <!-- Message de succès -->
+          <div class="form-success hidden" id="formSuccess">
+            ✅ Message envoyé ! Nous vous répondrons sous 24h.
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Marque -->
+        <div class="footer-brand">
+          <a href="#accueil" class="logo logo-footer">
+            <span class="logo-icon">◈</span>Car<span>Rent</span>
+          </a>
+          <p>Votre partenaire de confiance pour la location de voitures en France depuis 2015.</p>
+          <!-- Réseaux sociaux -->
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter/X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Liens rapides -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#voitures">Voitures</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Location courte durée</a></li>
+            <li><a href="#">Location longue durée</a></li>
+            <li><a href="#">Location avec chauffeur</a></li>
+            <li><a href="#">Transferts aéroport</a></li>
+          </ul>
+        </div>
+
+        <!-- Légal -->
+        <div class="footer-col">
+          <h4>Informations</h4>
+          <ul>
+            <li><a href="#">CGU</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Barre copyright -->
+      <div class="footer-bottom">
+        <p>© 2026 CarRent. Tous droits réservés.</p>
+        <p>Fait avec ❤️ en France</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════
+       MODAL LOUER / CONFIRMATION
+  ═══════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Rempli par JS -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+
+  <!-- Script principal -->
+  <script src="./scripts/script.js"></script>
+</body>
+</html>
