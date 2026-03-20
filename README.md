@@ -64,8 +64,8 @@ carloc/
 No dependencies, no install needed.
 
 ```bash
-git clone https://github.com/your-username/carloc.git
-cd carloc
+git clone https://github.com/your-username/Auto-Loc.git
+cd Auto-Loc
 ```
 
 Then just open `index.html` in your browser — or use a local server for a better experience:
