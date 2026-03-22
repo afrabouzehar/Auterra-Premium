@@ -9,13 +9,95 @@
 <body>
 
  
-   
+ <nav class="navbar">
+    <a href="index.html" class="logo">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <rect x="1" y="9" width="22" height="9" rx="2"/>
         <path d="M5 9V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/>
-        <circle cx="7" cy="18" r="2"/>
-        <circle cx="17" cy="18" r="2"/>
+        <circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
       </svg>
+      AutoLoc Premium
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="catalogue.html">Catalogue</a></li>
+      <li><a href="reservation.html">Réservation</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Porsche 911 Carrera</h1>
+      <p class="hero-sub">À partir de 250€ / jour</p>
+      <a href="catalogue.html" class="btn btn-primary">Découvrir notre flotte</a>
+    </div>
+  </section>
+  <section class="features">
+     <h2 class="section-title">Pourquoi choisir AutoLoc Premium ?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/>
+          </svg>
+        </div>
+        <h3>Véhicules Premium</h3>
+        <p>Une sélection de voitures haut de gamme entretenues régulièrement</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Assurance incluse</h3>
+        <p>Tous nos véhicules sont assurés pour votre tranquillité</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>Disponible 24/7</h3>
+        <p>Service client et assistance disponibles à tout moment</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <h3>Réservation facile</h3>
+        <p>Processus de réservation simple et rapide en ligne</p>
+      </div>
+    </div>
+  </section>
+  <section class="featured">
+    <h2 class="section-title">Véhicules en vedette</h2>
+    <div class="cars-grid">
+
+      <div class="car-card">
+        <div class="car-img" style="background: #1a1a2e;">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80" alt="Porsche 911"/>
+        </div>
+         <div class="car-info">
+          <div class="car-header">
+            <h3>Porsche 911 Carrera</h3>
+            <span class="tag">Sport</span>
+          </div>
+          <p>Voiture de sport emblématique offrant des performances exceptionnelles et un design intemporel.</p>
+          <div class="car-footer">
+            <span class="price">250€/jour</span>
+            <a href="reservation.html" class="btn btn-primary">Réserver</a>
+          </div>
+        </div>
+      </div>
 
     
 </body>      
