@@ -1,5 +1,5 @@
   function envoyer() {
-      const nom     = document.getElementById('nom').value.trim();
+      const nom     = document.getElementById('nom').value.trim();//récupère l’élément HTML avec l’id nom. value=récupère le texte que l’utilisateur a écrit. trim=supprime les espaces vides avant et après le texte (pratique pour éviter les champs vides avec juste des espaces).
       const email   = document.getElementById('email').value.trim();
       const sujet   = document.getElementById('sujet').value;
       const message = document.getElementById('message').value.trim();
