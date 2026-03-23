@@ -1,8 +1,5 @@
 /* ===== GOOGLE FONTS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap'); /*display=swap >>>ça dit au navigateur :
-affiche le texte immédiatement
-remplace la police quand elle est chargée
- évite les bugs visuels (texte invisible)*/
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
 /* ===== CSS VARIABLES ===== */
 :root {
@@ -18,11 +15,11 @@ remplace la police quand elle est chargée
   --radius: 12px;
   --shadow: 0 4px 20px rgba(0,0,0,0.08);
   --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
-}/*:root = l’élément principal de la page c’est comme <html>*/
+}
 
 /* ===== RESET ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }/*ça rend le scroll fluide (animé)*/
+html { scroll-behavior: smooth; }
 body {
   font-family: 'DM Sans', sans-serif;
   color: var(--gray-700);
