@@ -1,129 +1,220 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AutoLoc Premium — Réservation</title>
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="stylesheet" href="css/reservation.css"/>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .resa-section {
+      padding: 50px 40px;
+      background: #f5f5f5;
+    }
+
+    .resa-conteneur {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .formulaire-box {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+
+    .formulaire-box h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      margin-top: 24px;
+      color: #111;
+    }
+
+    .formulaire-box h2:first-child { margin-top: 0; }
+
+    .deux-colonnes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Récapitulatif */
+    .recap {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      height: fit-content;
+      position: sticky;
+      top: 80px;
+    }
+
+    .recap h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .ligne-recap {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    .ligne-recap span:last-child {
+      color: #333;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .separateur { border-top: 1px solid #eee; margin: 16px 0; }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .total span:last-child { color: #2563eb; font-size: 1.1rem; }
+
+    .note-recap {
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: #999;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .resa-conteneur { grid-template-columns: 1fr; }
+      .resa-section { padding: 30px 20px; }
+      .deux-colonnes { grid-template-columns: 1fr; }
+      .recap { position: static; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <a href="index.html" class="logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="1" y="9" width="22" height="9" rx="2"/>
-        <path d="M5 9V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/>
-        <circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
-      </svg>
-      AutoLoc Premium
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
+    <div class="logo">🚗 AutoLoc Premium</div>
+    <ul class="nav-liens">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="catalogue.html">Catalogue</a></li>
-      <li><a href="reservation.html" class="active">Réservation</a></li>
+      <li><a href="reservation.html" class="actif">Réservation</a></li>
       <li><a href="apropos.html">À propos</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <section class="page-header">
+  <!-- EN-TÊTE -->
+  <section class="entete">
     <h1>Réservation</h1>
     <p>Remplissez le formulaire ci-dessous pour réserver votre véhicule</p>
   </section>
 
-  <!-- RESERVATION FORM -->
+  <!-- FORMULAIRE + RÉCAP -->
   <section class="resa-section">
-    <div class="resa-container">
+    <div class="resa-conteneur">
 
-      <!-- FORM -->
-      <div class="resa-form-box">
-        <h2>Vos informations</h2>
-        <div id="successMsg" class="success-msg" style="display:none;">
+      <!-- FORMULAIRE -->
+      <div class="formulaire-box">
+
+        <div id="messageOk" class="message-ok">
           ✅ Réservation envoyée ! (Projet fictif — aucune donnée n'est enregistrée)
         </div>
 
-        <div class="form-group">
-          <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" placeholder="Jean"/>
+        <h2>Vos informations</h2>
+
+        <div class="deux-colonnes">
+          <div class="groupe">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" placeholder="Jean" />
+          </div>
+          <div class="groupe">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" placeholder="Dupont" />
+          </div>
         </div>
-        <div class="form-group">
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" placeholder="Dupont"/>
-        </div>
-        <div class="form-group">
+
+        <div class="groupe">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="jean@email.com"/>
+          <input type="email" id="email" placeholder="jean@email.com" />
         </div>
-        <div class="form-group">
+
+        <div class="groupe">
           <label for="tel">Téléphone</label>
-          <input type="tel" id="tel" placeholder="+33 6 12 34 56 78"/>
+          <input type="tel" id="tel" placeholder="+33 6 12 34 56 78" />
         </div>
 
-        <h2 style="margin-top: 1.5rem;">Détails de la location</h2>
+        <h2>Détails de la location</h2>
 
-        <div class="form-group">
-          <label for="voiture">Véhicule souhaité</label>
-          <select id="voiture">
+        <div class="groupe">
+          <label for="voiture">Véhicule</label>
+          <select id="voiture" onchange="mettreAJourRecap()">
             <option value="">-- Choisir un véhicule --</option>
-            <option value="Porsche 911 Carrera — 250€/jour">Porsche 911 Carrera — 250€/jour</option>
-            <option value="BMW X5 SUV — 180€/jour">BMW X5 SUV — 180€/jour</option>
-            <option value="Renault Clio — 45€/jour">Renault Clio — 45€/jour</option>
-            <option value="Mercedes Classe E — 160€/jour">Mercedes Classe E — 160€/jour</option>
-            <option value="Tesla Model 3 — 130€/jour">Tesla Model 3 — 130€/jour</option>
-            <option value="Ferrari F8 Tributo — 550€/jour">Ferrari F8 Tributo — 550€/jour</option>
+            <option value="Porsche 911 Carrera|250">Porsche 911 Carrera — 250€/jour</option>
+            <option value="BMW X5 SUV|180">BMW X5 SUV — 180€/jour</option>
+            <option value="Renault Clio|45">Renault Clio — 45€/jour</option>
+            <option value="Mercedes Classe E|160">Mercedes Classe E — 160€/jour</option>
+            <option value="Tesla Model 3|130">Tesla Model 3 — 130€/jour</option>
+            <option value="Ferrari F8 Tributo|550">Ferrari F8 Tributo — 550€/jour</option>
           </select>
         </div>
-        <div class="form-row">
-          <div class="form-group">
+
+        <div class="deux-colonnes">
+          <div class="groupe">
             <label for="dateDebut">Date de départ</label>
-            <input type="date" id="dateDebut"/>
+            <input type="date" id="dateDebut" onchange="mettreAJourRecap()" />
           </div>
-          <div class="form-group">
+          <div class="groupe">
             <label for="dateFin">Date de retour</label>
-            <input type="date" id="dateFin"/>
+            <input type="date" id="dateFin" onchange="mettreAJourRecap()" />
           </div>
         </div>
-        <div class="form-group">
+
+        <div class="groupe">
           <label for="message">Message (optionnel)</label>
           <textarea id="message" rows="3" placeholder="Informations supplémentaires..."></textarea>
         </div>
 
-        <button class="btn btn-primary" id="reserverBtn" style="width:100%; margin-top:0.5rem;">
+        <button class="btn btn-bleu" style="width:100%;" onclick="confirmer()">
           Confirmer la réservation
         </button>
+
       </div>
 
-      <!-- SUMMARY -->
-      <div class="resa-summary">
+      <!-- RÉCAPITULATIF -->
+      <div class="recap">
         <h3>Récapitulatif</h3>
-        <div class="summary-row">
+        <div class="ligne-recap">
           <span>Véhicule</span>
-          <span id="sumVoiture">—</span>
+          <span id="recapVoiture">—</span>
         </div>
-        <div class="summary-row">
+        <div class="ligne-recap">
           <span>Départ</span>
-          <span id="sumDebut">—</span>
+          <span id="recapDebut">—</span>
         </div>
-        <div class="summary-row">
+        <div class="ligne-recap">
           <span>Retour</span>
-          <span id="sumFin">—</span>
+          <span id="recapFin">—</span>
         </div>
-        <div class="summary-row">
+        <div class="ligne-recap">
           <span>Durée</span>
-          <span id="sumDuree">—</span>
+          <span id="recapDuree">—</span>
         </div>
-        <div class="summary-divider"></div>
-        <div class="summary-total">
+        <div class="separateur"></div>
+        <div class="total">
           <span>Total estimé</span>
-          <span id="sumTotal">—</span>
+          <span id="recapTotal">—</span>
         </div>
-        <p class="summary-note">⚠️ Projet fictif. Aucun paiement n'est requis.</p>
+        <p class="note-recap">⚠️ Projet fictif. Aucun paiement requis.</p>
       </div>
 
     </div>
@@ -131,37 +222,87 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22">
-            <rect x="1" y="9" width="22" height="9" rx="2"/>
-            <path d="M5 9V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/>
-            <circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
-          </svg>
-          AutoLoc Premium
-        </a>
-        <p>Votre agence de location de voitures premium.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <a href="index.html">Accueil</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="reservation.html">Réservation</a>
-        <a href="apropos.html">À propos</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="#">📍 12 Rue de la Paix, Paris</a>
-        <a href="#">📞 +33 1 23 45 67 89</a>
-        <a href="#">✉️ contact@autoloc.fr</a>
-      </div>
+    <div>
+      <div class="logo-footer">🚗 AutoLoc Premium</div>
+      <p>Votre agence de location de voitures premium.</p>
     </div>
-    <div class="footer-bottom">© 2025 AutoLoc Premium — Projet fictif</div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="index.html">Accueil</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="reservation.html">Réservation</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="#">📍 12 Rue de la Paix, Paris</a>
+      <a href="#">📞 +33 1 23 45 67 89</a>
+      <a href="#">✉️ contact@autoloc.fr</a>
+    </div>
   </footer>
+  <div class="footer-bas">© 2025 AutoLoc Premium — Projet fictif</div>
 
-  <script src="js/main.js"></script>
-  <script src="js/reservation.js"></script>
+  <script>
+    // Mettre la date minimum à aujourd'hui
+    const aujourd_hui = new Date().toISOString().split('T')[0];
+    document.getElementById('dateDebut').min = aujourd_hui;
+    document.getElementById('dateFin').min = aujourd_hui;
+
+    // Mettre à jour le récapitulatif
+    function mettreAJourRecap() {
+      const voitureVal = document.getElementById('voiture').value;
+      const debut = document.getElementById('dateDebut').value;
+      const fin = document.getElementById('dateFin').value;
+
+      // Afficher le nom de la voiture
+      if (voitureVal) {
+        const nom = voitureVal.split('|')[0];
+        document.getElementById('recapVoiture').textContent = nom;
+      }
+
+      // Afficher les dates
+      if (debut) document.getElementById('recapDebut').textContent = formaterDate(debut);
+      if (fin)   document.getElementById('recapFin').textContent   = formaterDate(fin);
+
+      // Calculer le total
+      if (voitureVal && debut && fin) {
+        const prixParJour = parseInt(voitureVal.split('|')[1]);
+        const date1 = new Date(debut);
+        const date2 = new Date(fin);
+        const nbJours = Math.round((date2 - date1) / (1000 * 60 * 60 * 24));
+
+        if (nbJours > 0) {
+          document.getElementById('recapDuree').textContent = nbJours + (nbJours > 1 ? ' jours' : ' jour');
+          document.getElementById('recapTotal').textContent = (nbJours * prixParJour) + '€';
+        }
+      }
+    }
+
+    // Formater la date : 2025-01-15 → 15/01/2025
+    function formaterDate(str) {
+      const [a, m, j] = str.split('-');
+      return j + '/' + m + '/' + a;
+    }
+
+    // Valider et confirmer
+    function confirmer() {
+      const prenom  = document.getElementById('prenom').value.trim();
+      const nom     = document.getElementById('nom').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const voiture = document.getElementById('voiture').value;
+      const debut   = document.getElementById('dateDebut').value;
+      const fin     = document.getElementById('dateFin').value;
+
+      if (!prenom || !nom || !email || !voiture || !debut || !fin) {
+        alert('Veuillez remplir tous les champs obligatoires.');
+        return;
+      }
+
+      document.getElementById('messageOk').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
 </body>
 </html>

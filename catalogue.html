@@ -1,184 +1,208 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AutoLoc Premium — Catalogue</title>
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="stylesheet" href="css/catalogue.css"/>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .catalogue { padding: 50px 40px; }
+
+    /* Boutons filtres */
+    .filtres {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .btn-filtre {
+      padding: 8px 20px;
+      border-radius: 30px;
+      border: 2px solid #ddd;
+      background: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .btn-filtre:hover { border-color: #2563eb; color: #2563eb; }
+    .btn-filtre.actif { background: #2563eb; border-color: #2563eb; color: white; }
+
+    /* Cacher une carte */
+    .carte-voiture.cache { display: none; }
+
+    /* Specs */
+    .specs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .specs span {
+      background: #f5f5f5;
+      color: #666;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .catalogue { padding: 30px 20px; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <a href="index.html" class="logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="1" y="9" width="22" height="9" rx="2"/>
-        <path d="M5 9V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/>
-        <circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
-      </svg>
-      AutoLoc Premium
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
+    <div class="logo">🚗 AutoLoc Premium</div>
+    <ul class="nav-liens">
       <li><a href="index.html">Accueil</a></li>
-      <li><a href="catalogue.html" class="active">Catalogue</a></li>
+      <li><a href="catalogue.html" class="actif">Catalogue</a></li>
       <li><a href="reservation.html">Réservation</a></li>
       <li><a href="apropos.html">À propos</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <section class="page-header">
+  <!-- EN-TÊTE -->
+  <section class="entete">
     <h1>Notre Catalogue</h1>
     <p>Découvrez notre sélection de véhicules premium disponibles à la location</p>
   </section>
 
-  <!-- FILTERS -->
-  <section class="catalogue-section">
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">Tous</button>
-      <button class="filter-btn" data-filter="Sport">Sport</button>
-      <button class="filter-btn" data-filter="SUV">SUV</button>
-      <button class="filter-btn" data-filter="Compacte">Compacte</button>
-      <button class="filter-btn" data-filter="Berline">Berline</button>
-      <button class="filter-btn" data-filter="Électrique">Électrique</button>
+  <!-- CATALOGUE -->
+  <section class="catalogue">
+
+    <!-- FILTRES -->
+    <div class="filtres">
+      <button class="btn-filtre actif" onclick="filtrer('tous', this)">Tous</button>
+      <button class="btn-filtre" onclick="filtrer('Sport', this)">Sport</button>
+      <button class="btn-filtre" onclick="filtrer('SUV', this)">SUV</button>
+      <button class="btn-filtre" onclick="filtrer('Compacte', this)">Compacte</button>
+      <button class="btn-filtre" onclick="filtrer('Berline', this)">Berline</button>
+      <button class="btn-filtre" onclick="filtrer('Électrique', this)">Électrique</button>
     </div>
 
-    <!-- CARS GRID -->
-    <div class="cars-grid" id="carsGrid">
+    <!-- VOITURES -->
+    <div class="grille-voitures" id="grille">
 
-      <div class="car-card" data-category="Sport">
-        <div class="car-img">
-          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80" alt="Porsche 911"/>
-        </div>
-        <div class="car-info">
-          <div class="car-header">
+      <div class="carte-voiture" data-categorie="Sport">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80" alt="Porsche 911" />
+        <div class="infos">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <h3>Porsche 911 Carrera</h3>
-            <span class="tag">Sport</span>
+            <span class="badge">Sport</span>
           </div>
-          <p>Voiture de sport emblématique, performances exceptionnelles et design intemporel.</p>
-          <ul class="car-specs">
-            <li>🔧 450 ch</li>
-            <li>⚡ 0–100 en 3.6s</li>
-            <li>⛽ Essence</li>
-          </ul>
-          <div class="car-footer">
-            <span class="price">250€/jour</span>
-            <a href="reservation.html" class="btn btn-primary">Réserver</a>
+          <p>Voiture de sport emblématique, performances exceptionnelles.</p>
+          <div class="specs">
+            <span>🔧 450 ch</span>
+            <span>⚡ 0–100 en 3.6s</span>
+            <span>⛽ Essence</span>
+          </div>
+          <div class="bas-carte">
+            <span class="prix">250€/jour</span>
+            <a href="reservation.html" class="btn btn-bleu">Réserver</a>
           </div>
         </div>
       </div>
 
-      <div class="car-card" data-category="SUV">
-        <div class="car-img">
-          <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=80" alt="BMW X5"/>
-        </div>
-        <div class="car-info">
-          <div class="car-header">
+      <div class="carte-voiture" data-categorie="SUV">
+        <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=80" alt="BMW X5" />
+        <div class="infos">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <h3>BMW X5 SUV</h3>
-            <span class="tag">SUV</span>
+            <span class="badge">SUV</span>
           </div>
-          <p>SUV premium alliant confort, espace et technologie de pointe.</p>
-          <ul class="car-specs">
-            <li>🔧 340 ch</li>
-            <li>🚗 7 places</li>
-            <li>⛽ Diesel</li>
-          </ul>
-          <div class="car-footer">
-            <span class="price">180€/jour</span>
-            <a href="reservation.html" class="btn btn-primary">Réserver</a>
+          <p>SUV premium alliant confort, espace et technologie.</p>
+          <div class="specs">
+            <span>🔧 340 ch</span>
+            <span>🚗 7 places</span>
+            <span>⛽ Diesel</span>
+          </div>
+          <div class="bas-carte">
+            <span class="prix">180€/jour</span>
+            <a href="reservation.html" class="btn btn-bleu">Réserver</a>
           </div>
         </div>
       </div>
 
-      <div class="car-card" data-category="Compacte">
-        <div class="car-img">
-          <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=600&q=80" alt="Renault Clio"/>
-        </div>
-        <div class="car-info">
-          <div class="car-header">
+      <div class="carte-voiture" data-categorie="Compacte">
+        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=600&q=80" alt="Renault Clio" />
+        <div class="infos">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <h3>Renault Clio</h3>
-            <span class="tag">Compacte</span>
+            <span class="badge">Compacte</span>
           </div>
-          <p>Voiture compacte idéale pour la ville, économique et facile à conduire.</p>
-          <ul class="car-specs">
-            <li>🔧 100 ch</li>
-            <li>⛽ Essence</li>
-            <li>💺 5 places</li>
-          </ul>
-          <div class="car-footer">
-            <span class="price">45€/jour</span>
-            <a href="reservation.html" class="btn btn-primary">Réserver</a>
+          <p>Voiture compacte idéale pour la ville, économique.</p>
+          <div class="specs">
+            <span>🔧 100 ch</span>
+            <span>⛽ Essence</span>
+            <span>💺 5 places</span>
+          </div>
+          <div class="bas-carte">
+            <span class="prix">45€/jour</span>
+            <a href="reservation.html" class="btn btn-bleu">Réserver</a>
           </div>
         </div>
       </div>
 
-      <div class="car-card" data-category="Berline">
-        <div class="car-img">
-          <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=600&q=80" alt="Mercedes Classe E"/>
-        </div>
-        <div class="car-info">
-          <div class="car-header">
+      <div class="carte-voiture" data-categorie="Berline">
+        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=600&q=80" alt="Mercedes" />
+        <div class="infos">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <h3>Mercedes Classe E</h3>
-            <span class="tag">Berline</span>
+            <span class="badge">Berline</span>
           </div>
-          <p>Berline luxueuse parfaite pour les déplacements professionnels et les longs trajets.</p>
-          <ul class="car-specs">
-            <li>🔧 300 ch</li>
-            <li>⛽ Hybride</li>
-            <li>💺 5 places</li>
-          </ul>
-          <div class="car-footer">
-            <span class="price">160€/jour</span>
-            <a href="reservation.html" class="btn btn-primary">Réserver</a>
+          <p>Berline luxueuse parfaite pour les déplacements professionnels.</p>
+          <div class="specs">
+            <span>🔧 300 ch</span>
+            <span>⛽ Hybride</span>
+            <span>💺 5 places</span>
+          </div>
+          <div class="bas-carte">
+            <span class="prix">160€/jour</span>
+            <a href="reservation.html" class="btn btn-bleu">Réserver</a>
           </div>
         </div>
       </div>
 
-      <div class="car-card" data-category="Électrique">
-        <div class="car-img">
-          <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&q=80" alt="Tesla Model 3"/>
-        </div>
-        <div class="car-info">
-          <div class="car-header">
+      <div class="carte-voiture" data-categorie="Électrique">
+        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&q=80" alt="Tesla" />
+        <div class="infos">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <h3>Tesla Model 3</h3>
-            <span class="tag">Électrique</span>
+            <span class="badge">Électrique</span>
           </div>
-          <p>Véhicule électrique ultra-moderne avec une autonomie de 560 km par charge.</p>
-          <ul class="car-specs">
-            <li>⚡ 100% Électrique</li>
-            <li>🔋 560 km</li>
-            <li>💺 5 places</li>
-          </ul>
-          <div class="car-footer">
-            <span class="price">130€/jour</span>
-            <a href="reservation.html" class="btn btn-primary">Réserver</a>
+          <p>Véhicule électrique ultra-moderne, 560 km d'autonomie.</p>
+          <div class="specs">
+            <span>⚡ 100% Électrique</span>
+            <span>🔋 560 km</span>
+          </div>
+          <div class="bas-carte">
+            <span class="prix">130€/jour</span>
+            <a href="reservation.html" class="btn btn-bleu">Réserver</a>
           </div>
         </div>
       </div>
 
-      <div class="car-card" data-category="Sport">
-        <div class="car-img">
-          <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80" alt="Ferrari"/>
-        </div>
-        <div class="car-info">
-          <div class="car-header">
+      <div class="carte-voiture" data-categorie="Sport">
+        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80" alt="Ferrari" />
+        <div class="infos">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <h3>Ferrari F8 Tributo</h3>
-            <span class="tag">Sport</span>
+            <span class="badge">Sport</span>
           </div>
-          <p>Le summum de la sportivité italienne, une expérience de conduite incomparable.</p>
-          <ul class="car-specs">
-            <li>🔧 720 ch</li>
-            <li>⚡ 0–100 en 2.9s</li>
-            <li>⛽ Essence</li>
-          </ul>
-          <div class="car-footer">
-            <span class="price">550€/jour</span>
-            <a href="reservation.html" class="btn btn-primary">Réserver</a>
+          <p>Le summum de la sportivité italienne, une expérience incomparable.</p>
+          <div class="specs">
+            <span>🔧 720 ch</span>
+            <span>⚡ 0–100 en 2.9s</span>
+          </div>
+          <div class="bas-carte">
+            <span class="prix">550€/jour</span>
+            <a href="reservation.html" class="btn btn-bleu">Réserver</a>
           </div>
         </div>
       </div>
@@ -188,37 +212,44 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22">
-            <rect x="1" y="9" width="22" height="9" rx="2"/>
-            <path d="M5 9V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/>
-            <circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
-          </svg>
-          AutoLoc Premium
-        </a>
-        <p>Votre agence de location de voitures premium.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <a href="index.html">Accueil</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="reservation.html">Réservation</a>
-        <a href="apropos.html">À propos</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="#">📍 12 Rue de la Paix, Paris</a>
-        <a href="#">📞 +33 1 23 45 67 89</a>
-        <a href="#">✉️ contact@autoloc.fr</a>
-      </div>
+    <div>
+      <div class="logo-footer">🚗 AutoLoc Premium</div>
+      <p>Votre agence de location de voitures premium.</p>
     </div>
-    <div class="footer-bottom">© 2025 AutoLoc Premium — Projet fictif</div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="index.html">Accueil</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="reservation.html">Réservation</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="#">📍 12 Rue de la Paix, Paris</a>
+      <a href="#">📞 +33 1 23 45 67 89</a>
+      <a href="#">✉️ contact@autoloc.fr</a>
+    </div>
   </footer>
+  <div class="footer-bas">© 2025 AutoLoc Premium — Projet fictif</div>
 
-  <script src="js/main.js"></script>
-  <script src="js/catalogue.js"></script>
+  <script>
+    // Filtrer les voitures selon la catégorie
+    function filtrer(categorie, boutonClique) {
+      // Changer le bouton actif
+      document.querySelectorAll('.btn-filtre').forEach(b => b.classList.remove('actif'));
+      boutonClique.classList.add('actif');
+
+      // Afficher ou cacher les cartes
+      document.querySelectorAll('.carte-voiture').forEach(carte => {
+        if (categorie === 'tous' || carte.dataset.categorie === categorie) {
+          carte.classList.remove('cache');
+        } else {
+          carte.classList.add('cache');
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>

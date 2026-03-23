@@ -1,117 +1,159 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AutoLoc Premium — À propos</title>
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="stylesheet" href="css/apropos.css"/>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Histoire */
+    .histoire {
+      padding: 60px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .histoire h2 { font-size: 1.6rem; margin-bottom: 16px; }
+    .histoire p { color: #666; line-height: 1.8; margin-bottom: 12px; }
+
+    .histoire img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Chiffres */
+    .chiffres {
+      background: #111;
+      padding: 50px 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .chiffre-grand {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #3b82f6;
+      display: block;
+    }
+
+    .chiffre-label {
+      font-size: 0.88rem;
+      color: #999;
+    }
+
+    /* Valeurs */
+    .valeurs {
+      padding: 60px 40px;
+      background: #f5f5f5;
+    }
+
+    .grille-valeurs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .carte-valeur {
+      background: white;
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+
+    .carte-valeur .icone { font-size: 2.5rem; margin-bottom: 12px; }
+    .carte-valeur h3 { font-weight: 700; margin-bottom: 8px; }
+    .carte-valeur p { font-size: 0.88rem; color: #666; line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .histoire { grid-template-columns: 1fr; padding: 40px 20px; gap: 24px; }
+      .chiffres { grid-template-columns: 1fr 1fr; padding: 40px 20px; }
+      .grille-valeurs { grid-template-columns: 1fr; }
+      .valeurs { padding: 40px 20px; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <a href="index.html" class="logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="1" y="9" width="22" height="9" rx="2"/>
-        <path d="M5 9V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/>
-        <circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
-      </svg>
-      AutoLoc Premium
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
+    <div class="logo">🚗 AutoLoc Premium</div>
+    <ul class="nav-liens">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="catalogue.html">Catalogue</a></li>
       <li><a href="reservation.html">Réservation</a></li>
-      <li><a href="apropos.html" class="active">À propos</a></li>
+      <li><a href="apropos.html" class="actif">À propos</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <section class="page-header">
+  <!-- EN-TÊTE -->
+  <section class="entete">
     <h1>À propos de nous</h1>
     <p>L'histoire d'une passion pour l'automobile et le service d'exception</p>
   </section>
 
-  <!-- STORY -->
-  <section class="story-section">
-    <div class="story-grid">
-      <div class="story-text">
-        <h2>Notre histoire</h2>
-        <p>Fondée en 2010 à Paris, AutoLoc Premium est née d'une passion commune pour les belles automobiles et le service haut de gamme. Ce qui a commencé comme une petite agence avec 5 véhicules est aujourd'hui devenue l'une des références de la location premium en France.</p>
-        <p>Notre philosophie est simple : offrir à chaque client une expérience mémorable, que ce soit pour un voyage d'affaires, une occasion spéciale ou simplement le plaisir de conduire un véhicule exceptionnel.</p>
-        <a href="catalogue.html" class="btn btn-primary" style="margin-top:1rem;">Voir nos véhicules</a>
-      </div>
-      <div class="story-img">
-        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=700&q=80" alt="Notre agence"/>
-      </div>
+  <!-- NOTRE HISTOIRE -->
+  <section class="histoire">
+    <div>
+      <h2>Notre histoire</h2>
+      <p>Fondée en 2010 à Paris, AutoLoc Premium est née d'une passion commune pour les belles automobiles et le service haut de gamme.</p>
+      <p>Ce qui a commencé comme une petite agence avec 5 véhicules est aujourd'hui devenue l'une des références de la location premium en France.</p>
+      <p>Notre philosophie : offrir à chaque client une expérience mémorable, que ce soit pour un voyage d'affaires ou simplement le plaisir de conduire un véhicule exceptionnel.</p>
+      <br />
+      <a href="catalogue.html" class="btn btn-bleu">Voir nos véhicules</a>
+    </div>
+    <div>
+      <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=700&q=80" alt="Notre agence" />
     </div>
   </section>
 
-  <!-- STATS -->
-  <section class="stats-section">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <span class="stat-number">+500</span>
-        <span class="stat-label">Clients satisfaits</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">30+</span>
-        <span class="stat-label">Véhicules disponibles</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">15</span>
-        <span class="stat-label">Ans d'expérience</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">4.9⭐</span>
-        <span class="stat-label">Note moyenne clients</span>
-      </div>
+  <!-- CHIFFRES CLÉS -->
+  <section class="chiffres">
+    <div>
+      <span class="chiffre-grand">+500</span>
+      <span class="chiffre-label">Clients satisfaits</span>
+    </div>
+    <div>
+      <span class="chiffre-grand">30+</span>
+      <span class="chiffre-label">Véhicules disponibles</span>
+    </div>
+    <div>
+      <span class="chiffre-grand">15</span>
+      <span class="chiffre-label">Ans d'expérience</span>
+    </div>
+    <div>
+      <span class="chiffre-grand">4.9⭐</span>
+      <span class="chiffre-label">Note moyenne</span>
     </div>
   </section>
 
-  <!-- TEAM -->
-  <section class="team-section">
-    <h2 class="section-title">Notre équipe</h2>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar">👨‍💼</div>
-        <h3>Marc Durand</h3>
-        <p>Fondateur & Directeur</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">👩‍💼</div>
-        <h3>Sophie Martin</h3>
-        <p>Responsable clientèle</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">👨‍🔧</div>
-        <h3>Julien Petit</h3>
-        <p>Chef mécanicien</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- VALUES -->
-  <section class="values-section">
-    <h2 class="section-title">Nos valeurs</h2>
-    <div class="values-grid">
-      <div class="value-card">
-        <span class="value-icon">🏆</span>
+  <!-- NOS VALEURS -->
+  <section class="valeurs">
+    <h2 class="titre-section">Nos valeurs</h2>
+    <div class="grille-valeurs">
+      <div class="carte-valeur">
+        <div class="icone">🏆</div>
         <h3>Excellence</h3>
-        <p>Nous ne proposons que des véhicules en parfait état, entretenus par nos mécaniciens certifiés.</p>
+        <p>Uniquement des véhicules en parfait état, entretenus par nos mécaniciens certifiés.</p>
       </div>
-      <div class="value-card">
-        <span class="value-icon">🤝</span>
+      <div class="carte-valeur">
+        <div class="icone">🤝</div>
         <h3>Confiance</h3>
         <p>Transparence totale sur nos tarifs, pas de frais cachés, pas de mauvaises surprises.</p>
       </div>
-      <div class="value-card">
-        <span class="value-icon">🌱</span>
+      <div class="carte-valeur">
+        <div class="icone">🌱</div>
         <h3>Responsabilité</h3>
         <p>Nous intégrons progressivement des véhicules électriques pour réduire notre empreinte carbone.</p>
       </div>
@@ -120,36 +162,26 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22">
-            <rect x="1" y="9" width="22" height="9" rx="2"/>
-            <path d="M5 9V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2"/>
-            <circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
-          </svg>
-          AutoLoc Premium
-        </a>
-        <p>Votre agence de location de voitures premium.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <a href="index.html">Accueil</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="reservation.html">Réservation</a>
-        <a href="apropos.html">À propos</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="#">📍 12 Rue de la Paix, Paris</a>
-        <a href="#">📞 +33 1 23 45 67 89</a>
-        <a href="#">✉️ contact@autoloc.fr</a>
-      </div>
+    <div>
+      <div class="logo-footer">🚗 AutoLoc Premium</div>
+      <p>Votre agence de location de voitures premium.</p>
     </div>
-    <div class="footer-bottom">© 2025 AutoLoc Premium — Projet fictif</div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="index.html">Accueil</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="reservation.html">Réservation</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="#">📍 12 Rue de la Paix, Paris</a>
+      <a href="#">📞 +33 1 23 45 67 89</a>
+      <a href="#">✉️ contact@autoloc.fr</a>
+    </div>
   </footer>
+  <div class="footer-bas">© 2025 AutoLoc Premium — Projet fictif</div>
 
-  <script src="js/main.js"></script>
 </body>
 </html>
