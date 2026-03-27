@@ -60,7 +60,11 @@
     font-size: 0.85rem;
     color: #666;
   }
-
+.carte-voiture:hover{
+   transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
 
   .vedette {
     padding: 70px 40px;

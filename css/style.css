@@ -1,5 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 
 :root {
@@ -26,7 +25,6 @@ body {
 
 a {
   text-decoration: none;
-  color: inherit;
 }
 
 img {
@@ -48,9 +46,10 @@ img {
 }
 
 .logo {
-  font-size: 1.2rem;
+  font-size: 19.2px;
   font-weight: 700;
   color: var(--bleu);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .nav-liens {
@@ -69,7 +68,7 @@ img {
 }
 
 .nav-liens a.actif {
-  color: var(--bleu);
+  color:  var(--bleu);
   font-weight: 600;
 }
 
@@ -78,19 +77,17 @@ img {
   padding: 12px 28px;
   border-radius: 8px;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
+  font-size: 15.2px;
   font-weight: 600;
   cursor: pointer;
   border: none;
-}
-
-.btn-bleu {
   background: var(--bleu);
   color: var(--blanc);
 }
 
+
 .btn-bleu:hover {
-  background: #1d4ed8;
+  background: var(--bleu);
 }
 
 .btn-blanc {
