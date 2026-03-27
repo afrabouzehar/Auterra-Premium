@@ -1,104 +1,97 @@
-  .main-black-page {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 120px 40px;
-  }
-
-  .main-black-page h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  .main-black-page p {
-    font-size: 1.1rem;
-    color: #aaa;
-    margin-bottom: 30px;
-  }
-
-  .avantages {
-    background: #f5f5f5;
-    padding: 70px 40px;
-    text-align: center;
-  }
-
-
-  .grille-avantages {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 10px;
-  }
-
-  .carte-avantage {
-    background: white;
-    border-radius: 12px;
-    padding: 28px 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
-  }
-
-  .carte-avantage:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-
-
-  .carte-avantage .icone {
-    font-size: 2rem;
-    margin-bottom: 12px;
-  }
-
-  .carte-avantage h3 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .carte-avantage p {
-    font-size: 0.85rem;
-    color: #666;
-  }
-.carte-voiture:hover{
-   transform: translateY(-10px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+.main-black-page {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 120px 40px;
 }
 
-  .vedette {
-    padding: 70px 40px;
+.main-black-page h1 {
+  font-size: 48px; 
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.main-black-page p {
+  font-size: 17.6px; 
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+.avantages {
+  background: #f5f5f5;
+  padding: 70px 40px;
+  text-align: center;
+}
+
+.grille-avantages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.carte-avantage {
+  background: white;
+  border-radius: 12px;
+  padding: 28px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.carte-avantage:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.carte-avantage .icone {
+  font-size: 32px; 
+  margin-bottom: 12px;
+}
+
+.carte-avantage h3 {
+  font-size: 15.2px; 
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.carte-avantage p {
+  font-size: 13.6px; 
+  color: #666;
+}
+
+.vedette {
+  padding: 70px 40px;
+}
+
+.banniere {
+  background: #2563eb;
+  color: white;
+  text-align: center;
+  padding: 70px 40px;
+}
+
+.banniere h2 {
+  font-size: 28.8px; 
+  margin-bottom: 12px;
+}
+
+.banniere p {
+  margin-bottom: 28px;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 32px; 
   }
 
-
-  .banniere {
-    background: #2563eb;
-    color: white;
-    text-align: center;
-    padding: 70px 40px;
+  .grille-avantages {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .banniere h2 {
-    font-size: 1.8rem;
-    margin-bottom: 12px;
+  .vedette,
+  .avantages {
+    padding: 40px 20px;
   }
-
-  .banniere p {
-    margin-bottom: 28px;
-    opacity: 0.9;
-  }
-
-  @media (max-width: 768px) {
-    .hero h1 {
-      font-size: 2rem;
-    }
-
-    .grille-avantages {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .vedette,
-    .avantages {
-      padding: 40px 20px;
-    }
-  }
+}
