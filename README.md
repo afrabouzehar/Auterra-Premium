@@ -1,4 +1,4 @@
-# 🚗 AutoLoc — Fictional Car Rental Website
+# 🚗 Auterra Premium — Fictional Car Rental Website
 
 A static front-end project simulating a car rental platform. Built with plain HTML, CSS, and JavaScript — no back-end, no framework, just clean web fundamentals.
 
